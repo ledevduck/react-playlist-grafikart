@@ -82,6 +82,7 @@ class Incrementer extends React.Component {
       <div>
         Value : {this.state.n}
         <button onClick={this.pause.bind(this)}>Pause</button>
+        <button onClick={this.play.bind(this)}>Play</button>
       </div>
     );
   }
