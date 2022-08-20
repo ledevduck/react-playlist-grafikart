@@ -86,6 +86,8 @@ class Incrementer extends React.Component {
   }
 
   reset() {
+    this.pause();
+    this.play();
     this.setState((state, props) => ({ n: props.start }));
   }
 
