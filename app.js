@@ -85,11 +85,16 @@ class Incrementer extends React.Component {
     return this.state.timer ? "Pause" : "Play";
   }
 
+  reset() {
+    this.setState((state, props) => ({ n: props.start }));
+  }
+
   render() {
     return (
       <div>
         Value : {this.state.n}
         <button onClick={this.toggle.bind(this)}>{this.label()}</button>
+        <button onClick={this.reset.bind(this)}>Reset Timer</button>
       </div>
     );
   }
