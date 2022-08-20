@@ -14,6 +14,24 @@ function Field({ name, value, onChange, children }) {
   );
 }
 
+function Checkbox({ name, value, onChange, children }) {
+  return (
+    <div className="form-check">
+      <input
+        type="checkbox"
+        checked={value}
+        onChange={onChange}
+        id={name}
+        name={name}
+        className="form-check-input"
+      />
+      <label htmlFor={name} className="form-check-label">
+        {children}
+      </label>
+    </div>
+  );
+}
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +65,13 @@ class Home extends React.Component {
         >
           First Name
         </Field>
+        <Checkbox
+          name="newsletter"
+          value={this.state.newsletter}
+          onChange={this.handleChange}
+        >
+          Newsletter
+        </Checkbox>
         {JSON.stringify(this.state)}
       </div>
     );
