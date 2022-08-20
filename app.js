@@ -8,11 +8,6 @@ function WelcomeFunc({ name, children }) {
 }
 
 class Welcome extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
   render() {
     return (
       <div>
@@ -23,7 +18,13 @@ class Welcome extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Welcome name="Joe">Hello World</Welcome>,
-  document.querySelector("#app")
-);
+function Home() {
+  return (
+    <div>
+      <Welcome name="Alice" />
+      <Welcome name="Bob" />
+    </div>
+  );
+}
+
+ReactDOM.render(<Home />, document.querySelector("#app"));
