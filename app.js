@@ -28,6 +28,10 @@ function PrimaryButton({ children }) {
   return <Button type="primary">{children}</Button>;
 }
 
+function SecondaryButton({ children }) {
+  return <Button type="secondary">{children}</Button>;
+}
+
 function BoilingVerdict({ celsius }) {
   if (celsius >= 100) {
     return <div className="alert alert-success">BOIL</div>;
@@ -109,6 +113,7 @@ class Calculator extends React.Component {
         />
         <BoilingVerdict celsius={celsius} />
         <PrimaryButton>Submit</PrimaryButton>
+        <SecondaryButton>Cancel</SecondaryButton>
       </div>
     );
   }
