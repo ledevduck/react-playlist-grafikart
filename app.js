@@ -3,6 +3,14 @@ const scaleNames = {
   f: "Fahrenheit",
 };
 
+function toCelsius(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9;
+}
+
+function toFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
 function BoilingVerdict({ celsius }) {
   if (celsius >= 100) {
     return <div className="alert alert-success">BOIL</div>;
@@ -13,18 +21,15 @@ function BoilingVerdict({ celsius }) {
 class TemperatureInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { temperature: "" };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({
-      temperature: e.target.value,
-    });
+    // this.setState({temperature: e.target.value});
   }
 
   render() {
-    const { temperature } = this.state;
+    const { temperature } = this.props;
     const name = "scale" + this.props.scale;
     const scaleName = scaleNames[this.props.scale];
     return (
@@ -46,16 +51,18 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      temperature: "",
+      temperature: 20,
     };
   }
 
   render() {
     const { temperature } = this.state;
+    const celsius = temperature;
+    const fahrenheit = toFahrenheit(celsius);
     return (
       <div>
-        <TemperatureInput scale="c" />
-        <TemperatureInput scale="f" />
+        <TemperatureInput scale="c" temperature={celsius} />
+        <TemperatureInput scale="f" temperature={fahrenheit} />
         <BoilingVerdict celsius={parseFloat(temperature)} />
       </div>
     );
