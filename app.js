@@ -19,6 +19,11 @@ function tryConvert(temperature, convert) {
   return (Math.round(convert(value) * 100) / 100).toString();
 }
 
+function Button({ type, children }) {
+  const className = "btn btn-" + type;
+  return <button className={className}>{children}</button>;
+}
+
 function BoilingVerdict({ celsius }) {
   if (celsius >= 100) {
     return <div className="alert alert-success">BOIL</div>;
@@ -99,6 +104,7 @@ class Calculator extends React.Component {
           onTemperatureChange={this.handleFahrenheitChange}
         />
         <BoilingVerdict celsius={celsius} />
+        <Button type="primary">Submit</Button>
       </div>
     );
   }
