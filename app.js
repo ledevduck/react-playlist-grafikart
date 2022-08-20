@@ -2,14 +2,14 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ["demo2", "demo3"],
+      checked: true,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     this.setState({
-      name: Array.from(e.target.selectedOptions).map((option) => option.value),
+      checked: e.target.checked,
     });
   }
 
@@ -17,11 +17,12 @@ class Home extends React.Component {
     return (
       <div>
         <label htmlFor="name">My name</label>
-        <select value={this.state.name} onChange={this.handleChange} multiple>
-          <option value="demo1">Demo 1</option>
-          <option value="demo2">Demo 2</option>
-          <option value="demo3">Demo 3</option>
-        </select>
+        <input
+          type="checkbox"
+          checked={this.state.checked}
+          onChange={this.handleChange}
+        ></input>
+        {this.state.checked ? <div>CHECKED</div> : null}
       </div>
     );
   }
