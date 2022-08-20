@@ -46,12 +46,36 @@ class Clock extends React.Component {
   }
 }
 
+class Incrementer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { n: props.start };
+    this.timer = null;
+  }
+  increment() {
+    this.setState({ n: this.state.n + 1 });
+  }
+
+  componentDidMount() {
+    this.timer = window.setInterval(this.increment.bind(this), 1000);
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.timer);
+  }
+
+  render() {
+    return <div>Value : {this.state.n}</div>;
+  }
+}
+
 function Home() {
   return (
     <div>
       <Welcome name="Alice" />
       <Welcome name="Bob" />
       <Clock />
+      <Incrementer start={10} />
     </div>
   );
 }
