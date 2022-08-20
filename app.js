@@ -3,8 +3,7 @@ let n = 0;
 function render() {
   const title = (
     <h1>
-      Hello World
-      <span>0</span>
+      Hello World <span>0</span>
     </h1>
   );
 
