@@ -6,7 +6,7 @@ function numberFormat(n) {
 
 function render() {
   const title = (
-    <h1 className="title">
+    <h1 className={"title" + n}>
       Hello World <span>{n}</span>
     </h1>
   );
