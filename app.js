@@ -56,6 +56,11 @@ class Home extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const data = JSON.stringify(this.state);
+    this.setState({
+      name: "",
+      firstName: "",
+      newsletter: false,
+    });
     console.log(data);
   }
 
