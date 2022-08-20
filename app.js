@@ -50,6 +50,8 @@ class Incrementer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { n: props.start, timer: null };
+    this.toggle = this.toggle.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   componentDidMount() {
@@ -95,8 +97,8 @@ class Incrementer extends React.Component {
     return (
       <div>
         Value : {this.state.n}
-        <button onClick={this.toggle.bind(this)}>{this.label()}</button>
-        <button onClick={this.reset.bind(this)}>Reset Timer</button>
+        <button onClick={this.toggle}>{this.label()}</button>
+        <button onClick={this.reset}>Reset Timer</button>
       </div>
     );
   }
