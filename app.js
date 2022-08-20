@@ -1,5 +1,6 @@
 function Welcome(props) {
-  return <h1>Hello World</h1>;
+  console.log(props);
+  return <h1>Hello {props.name}</h1>;
 }
 
-ReactDOM.render(<Welcome />, document.querySelector("#app"));
+ReactDOM.render(<Welcome name="Joe" />, document.querySelector("#app"));
