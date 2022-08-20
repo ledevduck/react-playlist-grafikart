@@ -9,29 +9,32 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      temperature: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    e.preventDefault();
     this.setState({
-      value: e.target.value,
+      temperature: e.target.value,
     });
   }
 
   render() {
+    const { temperature } = this.state;
     return (
       <div>
-        <input
-          type="number"
-          id="temperature"
-          name="temperature"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <BoilingVerdict celsius={this.state.value} />
+        <div className="form-group">
+          <label htmlFor="celsius">Celsius Temperature</label>
+          <input
+            className="form-control"
+            type="text"
+            id="celsius"
+            value={temperature}
+            onChange={this.handleChange}
+          />
+        </div>
+        <BoilingVerdict celsius={parseFloat(temperature)} />
       </div>
     );
   }
