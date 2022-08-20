@@ -57,7 +57,7 @@ class Incrementer extends React.Component {
   }
 
   componentWillUnmount() {
-    this.pause();
+    window.clearInterval(this.state.timer);
   }
 
   increment() {
