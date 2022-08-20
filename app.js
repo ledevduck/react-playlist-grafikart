@@ -7,7 +7,7 @@ function numberFormat(n) {
 function render() {
   const title = (
     <h1>
-      Hello World <span>{numberFormat(n)}</span>
+      Hello World <span>{n % 2 ? numberFormat(n) : null}</span>
     </h1>
   );
 
