@@ -51,6 +51,7 @@ class Home extends React.Component {
             name="newsletter"
           ></input>
         </div>
+        <input type="text" defaultValue="Hello" />
         {JSON.stringify(this.state)}
       </div>
     );
