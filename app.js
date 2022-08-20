@@ -19,11 +19,16 @@ class Welcome extends React.Component {
 }
 
 class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
   render() {
-    const date = new Date();
     return (
       <div>
-        It is {date.toLocaleDateString()} {date.toLocaleTimeString()}
+        It is {this.state.date.toLocaleDateString()}{" "}
+        {this.state.date.toLocaleTimeString()}
       </div>
     );
   }
