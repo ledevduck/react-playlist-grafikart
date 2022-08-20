@@ -2,7 +2,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Joe",
+      name: "demo2",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -17,12 +17,11 @@ class Home extends React.Component {
     return (
       <div>
         <label htmlFor="name">My name</label>
-        <textarea
-          id="name"
-          name="name"
-          value={this.state.name}
-          onChange={this.handleChange}
-        ></textarea>
+        <select value={this.state.name} onChange={this.handleChange}>
+          <option value="demo1">Demo 1</option>
+          <option value="demo2">Demo 2</option>
+          <option value="demo3">Demo 3</option>
+        </select>
       </div>
     );
   }
