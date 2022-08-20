@@ -1,9 +1,13 @@
 let n = 0;
 
+function numberFormat(n) {
+  return n.toString().padStart(2, "0");
+}
+
 function render() {
   const title = (
     <h1>
-      Hello World <span>{n}</span>
+      Hello World <span>{numberFormat(n)}</span>
     </h1>
   );
 
