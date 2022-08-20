@@ -6,14 +6,15 @@ function numberFormat(n) {
 
 function render() {
   const items = ["Tache 1", "Tache 2", "Tache 3"];
+
+  const lis = items.map((item) => <li>{item}</li>);
+
   const title = (
     <React.Fragment>
       <h1 className={"title" + n}>
         Hello World <span>{n}</span>
       </h1>
-      <ul>
-        <li></li>
-      </ul>
+      <ul>{lis}</ul>
     </React.Fragment>
   );
 
