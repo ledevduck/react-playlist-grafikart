@@ -1,8 +1,19 @@
-const title = React.createElement(
-  "h1",
-  {},
-  "Hello World ",
-  React.createElement("span", {}, 0)
-);
+let n = 0;
 
-ReactDOM.render(title, document.querySelector("#app"));
+function render() {
+  const title = React.createElement(
+    "h1",
+    {},
+    "Hello World ",
+    React.createElement("span", {}, n)
+  );
+
+  ReactDOM.render(title, document.querySelector("#app"));
+}
+
+render();
+
+window.setInterval(() => {
+  n++;
+  render();
+}, 1000);
