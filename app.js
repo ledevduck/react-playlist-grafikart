@@ -53,9 +53,7 @@ class Incrementer extends React.Component {
     this.timer = null;
   }
   increment() {
-    this.setState(function (state, props) {
-      return { n: state.n + 1 };
-    });
+    this.setState((state, props) => ({ n: state.n + 1 }));
   }
 
   componentDidMount() {
