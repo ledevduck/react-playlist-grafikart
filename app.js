@@ -1,8 +1,12 @@
 let n = 0;
 
 function render() {
-  const title = <h1>Hello World</h1>;
-  React.createElement("span", {}, n);
+  const title = (
+    <h1>
+      Hello World
+      <span>0</span>
+    </h1>
+  );
 
   ReactDOM.render(title, document.querySelector("#app"));
 }
