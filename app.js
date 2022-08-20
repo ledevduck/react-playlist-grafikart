@@ -1,9 +1,8 @@
-function Welcome(props) {
-  console.log(props);
+function Welcome({ name, children }) {
   return (
     <div>
-      <h1>Hello {props.name}</h1>
-      <p>{props.children}</p>
+      <h1>Hello {name}</h1>
+      <p>{children}</p>
     </div>
   );
 }
