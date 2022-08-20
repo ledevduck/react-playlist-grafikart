@@ -24,16 +24,16 @@ class Clock extends React.Component {
     this.state = { date: new Date() };
   }
 
-  tick() {
-    this.setState({ date: new Date() });
-  }
-
   componentDidMount() {
     this.timer = window.setInterval(this.tick.bind(this), 1000);
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timer);
+  }
+
+  tick() {
+    this.setState({ date: new Date() });
   }
 
   render() {
@@ -49,24 +49,41 @@ class Clock extends React.Component {
 class Incrementer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { n: props.start };
-    this.timer = null;
+    this.state = { n: props.start, timer: null };
+  }
+
+  componentDidMount() {
+    this.play();
+  }
+
+  componentWillUnmount() {
+    this.pause();
   }
 
   increment() {
     this.setState((state, props) => ({ n: state.n + props.step }));
   }
 
-  componentDidMount() {
-    this.timer = window.setInterval(this.increment.bind(this), 1000);
+  pause() {
+    window.clearInterval(this.state.timer);
+    this.setState({
+      timer: null,
+    });
   }
 
-  componentWillUnmount() {
-    window.clearInterval(this.timer);
+  play() {
+    this.setState({
+      timer: window.setInterval(this.increment.bind(this), 1000),
+    });
   }
 
   render() {
-    return <div>Value : {this.state.n}</div>;
+    return (
+      <div>
+        Value : {this.state.n}
+        <button onClick={this.pause.bind(this)}>Pause</button>
+      </div>
+    );
   }
 }
 
@@ -75,33 +92,12 @@ Incrementer.defaultProps = {
   step: 1,
 };
 
-class ManualIncrementer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { n: 0 };
-  }
-
-  increment(e) {
-    e.preventDefault();
-    this.setState((state, props) => ({ n: state.n + 1 }));
-  }
-
-  render() {
-    return (
-      <div>
-        Value : {this.state.n}{" "}
-        <button onClick={this.increment.bind(this)}>Increment</button>
-      </div>
-    );
-  }
-}
-
 function Home() {
   return (
     <div>
       <Welcome name="Alice" />
       <Welcome name="Bob" />
-      <ManualIncrementer />
+      <Incrementer />
     </div>
   );
 }
