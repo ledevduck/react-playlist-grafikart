@@ -82,7 +82,7 @@ class ManualIncrementer extends React.Component {
   }
 
   increment(e) {
-    console.log(e);
+    e.preventDefault();
     this.setState((state, props) => ({ n: state.n + 1 }));
   }
 
