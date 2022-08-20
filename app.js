@@ -88,7 +88,8 @@ class ManualIncrementer extends React.Component {
   render() {
     return (
       <div>
-        Value : {this.state.n} <button>Increment</button>
+        Value : {this.state.n}{" "}
+        <button onClick={this.increment.bind(this)}>Increment</button>
       </div>
     );
   }
