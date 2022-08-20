@@ -52,6 +52,7 @@ class Incrementer extends React.Component {
     this.state = { n: props.start };
     this.timer = null;
   }
+
   increment() {
     this.setState((state, props) => ({ n: state.n + props.step }));
   }
@@ -74,14 +75,31 @@ Incrementer.defaultProps = {
   step: 1,
 };
 
+class ManualIncrementer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { n: 0 };
+  }
+
+  increment() {
+    this.setState((state, props) => ({ n: state.n + 1 }));
+  }
+
+  render() {
+    return (
+      <div>
+        Value : {this.state.n} <button>Increment</button>
+      </div>
+    );
+  }
+}
+
 function Home() {
   return (
     <div>
       <Welcome name="Alice" />
       <Welcome name="Bob" />
-      <Clock />
-      <Incrementer start={10} />
-      <Incrementer start={100} step={10} />
+      <ManualIncrementer />
     </div>
   );
 }
