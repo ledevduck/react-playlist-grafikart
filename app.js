@@ -17,13 +17,12 @@ class Home extends React.Component {
     return (
       <div>
         <label htmlFor="name">My name</label>
-        <input
-          type="text"
+        <textarea
           id="name"
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
-        />
+        ></textarea>
       </div>
     );
   }
