@@ -1,3 +1,22 @@
+class Field extends React.Component {
+  render() {
+    const { name, value, onChange, children } = this.props;
+    return (
+      <div className="form-group">
+        <label htmlFor={name}>{children}</label>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+          id={name}
+          name={name}
+          className="form-control"
+        />
+      </div>
+    );
+  }
+}
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -20,38 +39,17 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            value={this.state.name}
-            onChange={this.handleChange}
-            id="name"
-            name="name"
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-            id="firstName"
-            name="firstName"
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="newsletter">Newsletter</label>
-          <input
-            type="checkbox"
-            checked={this.state.newsletter}
-            onChange={this.handleChange}
-            id="newsletter"
-            name="newsletter"
-          ></input>
-        </div>
-        <input type="text" defaultValue="Hello" />
+      <div className="container">
+        <Field name="name" value={this.state.name} onChange={this.handleChange}>
+          Name
+        </Field>
+        <Field
+          name="firstName"
+          value={this.state.firstName}
+          onChange={this.handleChange}
+        >
+          First Name
+        </Field>
         {JSON.stringify(this.state)}
       </div>
     );
