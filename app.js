@@ -7,7 +7,7 @@ function numberFormat(n) {
 function render() {
   const items = ["Tache 1", "Tache 2", "Tache 3"];
 
-  const lis = items.map((item) => <li>{item}</li>);
+  const lis = items.map((item, k) => <li key={k}>{item}</li>);
 
   const title = (
     <React.Fragment>
