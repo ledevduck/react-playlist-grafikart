@@ -41,6 +41,7 @@ class Home extends React.Component {
       newsletter: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -52,9 +53,15 @@ class Home extends React.Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = JSON.stringify(this.state);
+    console.log(data);
+  }
+
   render() {
     return (
-      <div className="container">
+      <form className="container" onSubmit={this.handleSubmit}>
         <Field name="name" value={this.state.name} onChange={this.handleChange}>
           Name
         </Field>
@@ -72,8 +79,11 @@ class Home extends React.Component {
         >
           Newsletter
         </Checkbox>
+        <div className="form-group">
+          <button className="btn btn-primary">Submit</button>
+        </div>
         {JSON.stringify(this.state)}
-      </div>
+      </form>
     );
   }
 }
